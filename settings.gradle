@@ -1,2 +1,5 @@
+include ':network'
+include ':utils'
+include ':domain'
 include ':app'
 rootProject.name = "ryanairandroidchallenge"

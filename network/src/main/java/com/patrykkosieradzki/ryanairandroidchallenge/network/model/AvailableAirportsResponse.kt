@@ -1,0 +1,2 @@
+package com.patrykkosieradzki.ryanairandroidchallenge.network.model
+

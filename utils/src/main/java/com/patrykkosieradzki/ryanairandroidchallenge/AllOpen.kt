@@ -1,0 +1,3 @@
+package com.patrykkosieradzki.ryanairandroidchallenge
+
+annotation class AllOpen
