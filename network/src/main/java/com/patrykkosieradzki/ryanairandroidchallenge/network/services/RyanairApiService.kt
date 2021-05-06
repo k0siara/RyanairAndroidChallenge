@@ -1,5 +1,8 @@
 package com.patrykkosieradzki.ryanairandroidchallenge.network.services
 
-interface RyanairApiService {
+import com.patrykkosieradzki.ryanairandroidchallenge.network.model.FlightSearchResponse
+import com.patrykkosieradzki.ryanairandroidchallenge.network.utils.ApiResult
 
+interface RyanairApiService {
+    suspend fun getSearchFlightsResults(): ApiResult<FlightSearchResponse>
 }

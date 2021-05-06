@@ -1,13 +1,13 @@
 package com.patrykkosieradzki.ryanairandroidchallenge.di
 
-import com.patrykkosieradzki.ryanairandroidchallenge.RyanairAndroidChallengeAppConfiguration
+import com.patrykkosieradzki.ryanairandroidchallenge.RyanairAppConfiguration
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.AppConfiguration
 import org.koin.dsl.module
 
 val appModule = module {
 
     single<AppConfiguration> {
-        RyanairAndroidChallengeAppConfiguration()
+        RyanairAppConfiguration()
     }
 
 //    factory<GetNowPlayingMoviesUseCase> {
