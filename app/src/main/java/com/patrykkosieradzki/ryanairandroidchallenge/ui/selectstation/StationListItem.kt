@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch
+package com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation
 
 enum class StationListItemType {
     HEADER, GROUP_ITEM
@@ -16,9 +16,9 @@ class StationHeaderItem(
     override val type = StationListItemType.HEADER
 }
 
-class StationGroupItem(
-    override val name: String
+class StationGroupListItem(
+    override val name: String,
+    val code: String
 ) : StationListItem {
-
     override val type = StationListItemType.GROUP_ITEM
 }

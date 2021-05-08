@@ -5,5 +5,12 @@ import com.patrykkosieradzki.ryanairandroidchallenge.domain.model.Station
 
 interface FlightRepository {
     suspend fun getAllStations(): List<Station>
-    suspend fun getFlights(): List<FlightSearchData>
+    suspend fun getFlights(
+        dateOut: String,
+        originCode: String,
+        destinationCode: String,
+        adults: Int,
+        teens: Int,
+        children: Int
+    ): FlightSearchData
 }

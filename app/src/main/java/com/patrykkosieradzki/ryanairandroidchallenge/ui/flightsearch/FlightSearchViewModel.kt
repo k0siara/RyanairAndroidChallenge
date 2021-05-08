@@ -1,8 +1,6 @@
 package com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch
 
 import com.hadilq.liveevent.LiveEvent
-import com.patrykkosieradzki.ryanairandroidchallenge.domain.model.Station
-import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStationsUseCase
 import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel.Companion.DATE_FORMATTER
 import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel.Companion.MAX_SOLD_FLIGHTS
 import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel.Companion.MEAN_SOLD_FLIGHTS
@@ -12,35 +10,12 @@ import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.fireEvent
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 
-class FlightSearchViewModel(
-    private val getAllStationsUseCase: GetAllStationsUseCase
-) : BaseViewModel<FlightSearchViewState>(
-    initialState = FlightSearchViewState(inProgress = true)
+class FlightSearchViewModel : BaseViewModel<FlightSearchViewState>(
+    initialState = FlightSearchViewState(inProgress = false)
 ) {
     val departureDateChangeEvent = LiveEvent<Unit>()
-
-    override fun initialize() {
-        super.initialize()
-        safeLaunch {
-            val stations = getAllStationsUseCase.invoke()
-            updateViewState {
-                it.copy(
-                    availableStations = convertStationsToGroupedStationList(stations),
-                    inProgress = false,
-                )
-            }
-        }
-    }
-
-    private fun convertStationsToGroupedStationList(stations: List<Station>): List<StationListItem> {
-        return stations.groupBy { it.countryName }.entries
-            .map {
-                ArrayList<StationListItem>().apply {
-                    add(StationHeaderItem(it.key))
-                    it.value.forEach { station -> add(StationGroupItem(station.name)) }
-                }
-            }.flatten()
-    }
+    val chooseDepartureStationEvent = LiveEvent<Unit>()
+    val chooseArrivalStationEvent = LiveEvent<Unit>()
 
     fun onDepartureDateClicked() {
         departureDateChangeEvent.fireEvent()
@@ -87,11 +62,37 @@ class FlightSearchViewModel(
         }
     }
 
+    fun onDepartureFieldClicked() {
+        chooseDepartureStationEvent.fireEvent()
+    }
+
+    fun onArrivalFieldClicked() {
+        chooseArrivalStationEvent.fireEvent()
+    }
+
+    fun updateDepartureStation(name: String, code: String) {
+        updateViewState {
+            it.copy(
+                selectedDepartureStationName = name,
+                selectedDepartureStationCode = code
+            )
+        }
+    }
+
+    fun updateArrivalStation(name: String, code: String) {
+        updateViewState {
+            it.copy(
+                selectedArrivalStationName = name,
+                selectedArrivalStationCode = code
+            )
+        }
+    }
+
     fun onSearchButtonClicked() {
     }
 
     companion object {
-        val DATE_FORMATTER: DateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+        val DATE_FORMATTER: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         const val MAX_SOLD_FLIGHTS = 1000
         const val MEAN_SOLD_FLIGHTS = 150
     }
@@ -99,9 +100,10 @@ class FlightSearchViewModel(
 
 data class FlightSearchViewState(
     override val inProgress: Boolean,
-    val availableStations: List<StationListItem> = emptyList(),
-    val selectedDepartureStation: String = "",
-    val selectedArrivalStation: String = "",
+    val selectedDepartureStationName: String = "",
+    val selectedDepartureStationCode: String = "",
+    val selectedArrivalStationName: String = "",
+    val selectedArrivalStationCode: String = "",
     val adultsSelected: Int = 0,
     val teensSelected: Int = 0,
     val childrenSelected: Int = 0,

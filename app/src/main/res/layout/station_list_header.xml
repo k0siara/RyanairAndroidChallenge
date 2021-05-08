@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.StationListItem" />
+
+        <variable
+            name="item"
+            type="StationListItem"/>
+
+        <variable
+            name="listener"
+            type="com.patrykkosieradzki.ryanairandroidchallenge.utils.OnItemClickListener&lt;StationListItem>"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="@{()->listener.onClick(item)}"
+        android:padding="@dimen/dimen_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/camera_name"
+            android:text="@{item.name}"
+            tools:text="France"
+            android:textSize="@dimen/font_size_16"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

@@ -5,6 +5,7 @@ import com.patrykkosieradzki.ryanairandroidchallenge.domain.AppConfiguration
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStationsUseCase
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStationsUseCaseImpl
 import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.SelectStationViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -16,13 +17,17 @@ val appModule = module {
 
     factory<GetAllStationsUseCase> {
         GetAllStationsUseCaseImpl(
-            flightRepository = get(),
+            flightRepository = get()
         )
     }
 
     viewModel {
-        FlightSearchViewModel(
-            getAllStationsUseCase = get(),
+        FlightSearchViewModel()
+    }
+
+    viewModel {
+        SelectStationViewModel(
+            getAllStationsUseCase = get()
         )
     }
 }

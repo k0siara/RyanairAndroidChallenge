@@ -39,7 +39,8 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toStartOf="@id/toSection"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/logo">
+                app:layout_constraintTop_toBottomOf="@id/logo"
+                app:onClick="@{vm::onDepartureFieldClicked}">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -52,7 +53,8 @@
                     android:clickable="false"
                     android:focusable="false"
                     android:hint="Select station"
-                    android:text="@{vm.viewState.selectedDepartureStation}" />
+                    android:text="@{vm.viewState.selectedDepartureStationName}"
+                    app:onClick="@{vm::onDepartureFieldClicked}" />
             </LinearLayout>
 
             <LinearLayout
@@ -63,7 +65,8 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/fromSection"
-                app:layout_constraintTop_toTopOf="@id/fromSection">
+                app:layout_constraintTop_toTopOf="@id/fromSection"
+                app:onClick="@{vm::onArrivalFieldClicked}">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -76,7 +79,8 @@
                     android:clickable="false"
                     android:focusable="false"
                     android:hint="Select station"
-                    android:text="@{vm.viewState.selectedArrivalStation}" />
+                    android:text="@{vm.viewState.selectedArrivalStationName}"
+                    app:onClick="@{vm::onArrivalFieldClicked}" />
             </LinearLayout>
 
             <LinearLayout
