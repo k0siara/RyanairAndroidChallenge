@@ -24,10 +24,19 @@ class FlightSearchFragment :
             }
         }
 
-        binding.let {
-            setSpinner(it.adultsSpinner) { value -> viewModel.updateAdultsSelected(value) }
-            setSpinner(it.teensSpinner) { value -> viewModel.updateTeensSelected(value) }
-            setSpinner(it.childrenSpinner) { value -> viewModel.updateChildrenSelected(value) }
+        binding.apply {
+            setSpinner(adultsSpinner) { viewModel.updateAdultsSelected(it) }
+            setSpinner(teensSpinner) { viewModel.updateTeensSelected(it) }
+            setSpinner(childrenSpinner) { viewModel.updateChildrenSelected(it) }
+
+            priceSeekbar.apply {
+                setRangeValues(0, viewModel.viewState.valueNN.maxFlightSoldPrice)
+                selectedMinValue = 0
+                selectedMaxValue = viewModel.viewState.valueNN.meanFlightSoldPrice
+                setOnRangeSeekBarChangeListener { _, minValue, maxValue ->
+                    viewModel.updateMinAndMaxPriceValue(minValue as Int, maxValue as Int)
+                }
+            }
         }
     }
 

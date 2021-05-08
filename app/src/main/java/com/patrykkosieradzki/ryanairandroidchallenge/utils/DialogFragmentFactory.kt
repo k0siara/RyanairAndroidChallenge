@@ -22,6 +22,7 @@ class DefaultDialogFragment : DialogFragment() {
     var title: String? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+
         super.onActivityCreated(savedInstanceState)
         dialog?.setCancelable(false)
     }

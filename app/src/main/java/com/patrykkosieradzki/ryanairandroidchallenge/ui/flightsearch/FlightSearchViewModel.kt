@@ -4,6 +4,8 @@ import com.hadilq.liveevent.LiveEvent
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.model.Station
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStationsUseCase
 import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel.Companion.DATE_FORMATTER
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel.Companion.MAX_SOLD_FLIGHTS
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel.Companion.MEAN_SOLD_FLIGHTS
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.BaseViewModel
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.ViewState
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.fireEvent
@@ -76,12 +78,22 @@ class FlightSearchViewModel(
         }
     }
 
-    fun onSearchButtonClicked() {
+    fun updateMinAndMaxPriceValue(min: Int, max: Int) {
+        updateViewState {
+            it.copy(
+                selectedMinPrice = min,
+                selectedMaxPrice = max
+            )
+        }
+    }
 
+    fun onSearchButtonClicked() {
     }
 
     companion object {
         val DATE_FORMATTER: DateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+        const val MAX_SOLD_FLIGHTS = 1000
+        const val MEAN_SOLD_FLIGHTS = 150
     }
 }
 
@@ -93,9 +105,15 @@ data class FlightSearchViewState(
     val adultsSelected: Int = 0,
     val teensSelected: Int = 0,
     val childrenSelected: Int = 0,
-    val departureDate: LocalDate = LocalDate.now()
+    val departureDate: LocalDate = LocalDate.now(),
+    val maxFlightSoldPrice: Int = MAX_SOLD_FLIGHTS,
+    val meanFlightSoldPrice: Int = MEAN_SOLD_FLIGHTS,
+    val selectedMinPrice: Int = 0,
+    val selectedMaxPrice: Int = MEAN_SOLD_FLIGHTS
 ) : ViewState {
     val departureDateStr: String = departureDate.format(DATE_FORMATTER)
+    val selectedMinPriceStr: String = selectedMinPrice.toString()
+    val selectedMaxPriceStr: String = selectedMaxPrice.toString()
 
     override fun toSuccess() = copy(inProgress = false)
 }

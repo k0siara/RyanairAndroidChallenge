@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -10,172 +11,203 @@
             type="com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/dimen_20"
         tools:context=".ui.flightsearch.FlightSearchFragment">
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimen_201"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ryanair_logo" />
-
-        <LinearLayout
-            android:id="@+id/fromSection"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_20"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@id/toSection"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logo">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Departure" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false"
-                android:hint="Select station"
-                android:text="@{vm.viewState.selectedDepartureStation}" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/toSection"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_40"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/fromSection"
-            app:layout_constraintTop_toTopOf="@id/fromSection">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Arrival" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false"
-                android:hint="Select station"
-                android:text="@{vm.viewState.selectedArrivalStation}" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/adultsSection"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_20"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@id/teensSection"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fromSection">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Adults" />
-
-            <Spinner
-                android:id="@+id/adultsSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/teensSection"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@id/childrenSection"
-            app:layout_constraintStart_toEndOf="@+id/adultsSection"
-            app:layout_constraintTop_toTopOf="@+id/adultsSection">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Teens" />
-
-            <Spinner
-                android:id="@+id/teensSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/childrenSection"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/teensSection"
-            app:layout_constraintTop_toTopOf="@+id/teensSection">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Children" />
-
-            <Spinner
-                android:id="@+id/childrenSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/departureDateSection"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dimen_20"
-            android:layout_marginTop="@dimen/dimen_20"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teensSection"
-            app:onClick="@{vm::onDepartureDateClicked}">
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_20">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_106"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ryanair_logo" />
+
+            <LinearLayout
+                android:id="@+id/fromSection"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@id/toSection"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logo">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Departure" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:hint="Select station"
+                    android:text="@{vm.viewState.selectedDepartureStation}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/toSection"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_40"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/fromSection"
+                app:layout_constraintTop_toTopOf="@id/fromSection">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arrival" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:hint="Select station"
+                    android:text="@{vm.viewState.selectedArrivalStation}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/adultsSection"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@id/teensSection"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fromSection">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adults" />
+
+                <Spinner
+                    android:id="@+id/adultsSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/teensSection"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@id/childrenSection"
+                app:layout_constraintStart_toEndOf="@+id/adultsSection"
+                app:layout_constraintTop_toTopOf="@+id/adultsSection">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Teens" />
+
+                <Spinner
+                    android:id="@+id/teensSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/childrenSection"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/teensSection"
+                app:layout_constraintTop_toTopOf="@+id/teensSection">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Children" />
+
+                <Spinner
+                    android:id="@+id/childrenSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/departureDateSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teensSection"
+                app:onClick="@{vm::onDepartureDateClicked}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Departure date" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:text="@{vm.viewState.departureDateStr}"
+                    app:onClick="@{vm::onDepartureDateClicked}"
+                    tools:text="10.04.2022" />
+            </LinearLayout>
+
+            <org.florescu.android.rangeseekbar.RangeSeekBar
+                android:id="@+id/priceSeekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/departureDateSection" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Departure date" />
+                android:text="@{vm.viewState.selectedMinPriceStr}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/priceSeekbar"
+                tools:text="0" />
 
-            <EditText
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false"
-                android:text="@{vm.viewState.departureDateStr}"
-                app:onClick="@{vm::onDepartureDateClicked}"
-                tools:text="10.04.2022" />
-        </LinearLayout>
+                android:text="@{vm.viewState.selectedMaxPriceStr}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/priceSeekbar"
+                tools:text="1000" />
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_40"
-            android:text="SEARCH FOR FLIGHTS"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/departureDateSection"
-            app:onClick="@{vm.onSearchButtonClicked}" />
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_40"
+                android:text="SEARCH FOR FLIGHTS"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/priceSeekbar"
+                app:onClick="@{vm::onSearchButtonClicked}" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </layout>
