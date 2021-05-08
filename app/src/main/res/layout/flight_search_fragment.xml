@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel" />
@@ -31,19 +32,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_20"
             android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/toSection"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="From" />
+                android:text="Departure" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="London" />
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="Select station"
+                android:text="@{vm.viewState.selectedDepartureStation}" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,12 +63,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To" />
+                android:text="Arrival" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Warsaw" />
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="Select station"
+                android:text="@{vm.viewState.selectedArrivalStation}" />
         </LinearLayout>
 
         <LinearLayout
@@ -73,8 +80,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_20"
             android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/teensSection"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fromSection">
 
             <TextView
@@ -82,10 +89,11 @@
                 android:layout_height="wrap_content"
                 android:text="Adults" />
 
-            <EditText
+            <Spinner
+                android:id="@+id/adultsSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1" />
+                android:spinnerMode="dialog" />
         </LinearLayout>
 
         <LinearLayout
@@ -93,8 +101,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintStart_toEndOf="@+id/adultsSection"
             app:layout_constraintEnd_toStartOf="@id/childrenSection"
+            app:layout_constraintStart_toEndOf="@+id/adultsSection"
             app:layout_constraintTop_toTopOf="@+id/adultsSection">
 
             <TextView
@@ -102,10 +110,11 @@
                 android:layout_height="wrap_content"
                 android:text="Teens" />
 
-            <EditText
+            <Spinner
+                android:id="@+id/teensSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2" />
+                android:spinnerMode="dialog" />
         </LinearLayout>
 
         <LinearLayout
@@ -122,14 +131,16 @@
                 android:layout_height="wrap_content"
                 android:text="Children" />
 
-            <EditText
+            <Spinner
+                android:id="@+id/childrenSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="3" />
+                android:spinnerMode="dialog" />
+
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/departureDateSection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dimen_20"
@@ -137,7 +148,8 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teensSection">
+            app:layout_constraintTop_toBottomOf="@+id/teensSection"
+            app:onClick="@{vm::onDepartureDateClicked}">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -147,7 +159,11 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="01.10.2021" />
+                android:clickable="false"
+                android:focusable="false"
+                android:text="@{vm.viewState.departureDateStr}"
+                app:onClick="@{vm::onDepartureDateClicked}"
+                tools:text="10.04.2022" />
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -157,7 +173,8 @@
             android:text="SEARCH FOR FLIGHTS"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+            app:layout_constraintTop_toBottomOf="@+id/departureDateSection"
+            app:onClick="@{vm.onSearchButtonClicked}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -7,11 +7,11 @@ data class AvailableAirportsData(
 data class Station(
     val code: String,
     val name: String,
-    val alternateName: String,
+    val alternateName: String?,
     val alias: List<String>,
     val countryCode: String,
     val countryName: String,
-    val countryAlias: String? = null,
+    val countryAlias: String?,
     val countryGroupCode: String,
     val countryGroupName: String,
     val timeZoneCode: String,
@@ -19,10 +19,10 @@ data class Station(
     val longitude: String,
     val mobileBoardingPass: Boolean,
     val markets: List<Market>,
-    val notices: String? = null
+    val notices: String?
 )
 
 data class Market(
     val code: String,
-    val group: String? = null
+    val group: String?
 )

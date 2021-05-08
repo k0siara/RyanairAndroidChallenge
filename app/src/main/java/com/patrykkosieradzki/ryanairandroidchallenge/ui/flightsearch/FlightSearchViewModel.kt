@@ -1,15 +1,22 @@
 package com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch
 
+import com.hadilq.liveevent.LiveEvent
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.model.Station
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStationsUseCase
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel.Companion.DATE_FORMATTER
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.BaseViewModel
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.ViewState
+import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.fireEvent
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
 
 class FlightSearchViewModel(
     private val getAllStationsUseCase: GetAllStationsUseCase
 ) : BaseViewModel<FlightSearchViewState>(
     initialState = FlightSearchViewState(inProgress = true)
 ) {
+    val departureDateChangeEvent = LiveEvent<Unit>()
+
     override fun initialize() {
         super.initialize()
         safeLaunch {
@@ -32,11 +39,63 @@ class FlightSearchViewModel(
                 }
             }.flatten()
     }
+
+    fun onDepartureDateClicked() {
+        departureDateChangeEvent.fireEvent()
+    }
+
+    fun updateAdultsSelected(adults: Int) {
+        updateViewState {
+            it.copy(
+                adultsSelected = adults
+            )
+        }
+    }
+
+    fun updateTeensSelected(teens: Int) {
+        updateViewState {
+            it.copy(
+                teensSelected = teens
+            )
+        }
+    }
+
+    fun updateChildrenSelected(children: Int) {
+        updateViewState {
+            it.copy(
+                childrenSelected = children
+            )
+        }
+    }
+
+    fun updateDepartureDate(date: LocalDate) {
+        updateViewState {
+            it.copy(
+                departureDate = date
+            )
+        }
+    }
+
+    fun onSearchButtonClicked() {
+
+    }
+
+    companion object {
+        val DATE_FORMATTER: DateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+    }
 }
 
 data class FlightSearchViewState(
     override val inProgress: Boolean,
-    val availableStations: List<StationListItem> = emptyList()
+    val availableStations: List<StationListItem> = emptyList(),
+    val selectedDepartureStation: String = "",
+    val selectedArrivalStation: String = "",
+    val adultsSelected: Int = 0,
+    val teensSelected: Int = 0,
+    val childrenSelected: Int = 0,
+    val departureDate: LocalDate = LocalDate.now()
 ) : ViewState {
+    val departureDateStr: String = departureDate.format(DATE_FORMATTER)
+
     override fun toSuccess() = copy(inProgress = false)
 }

@@ -2,6 +2,7 @@ package com.patrykkosieradzki.ryanairandroidchallenge
 
 import android.app.Application
 import com.google.firebase.FirebaseApp
+import com.jakewharton.threetenabp.AndroidThreeTen
 import com.patrykkosieradzki.ryanairandroidchallenge.di.appModule
 import com.patrykkosieradzki.ryanairandroidchallenge.network.di.networkModule
 import org.koin.android.ext.koin.androidContext
@@ -12,6 +13,7 @@ import timber.log.Timber
 class RyanairApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        AndroidThreeTen.init(this);
         FirebaseApp.initializeApp(this)
 
         if (BuildConfig.DEBUG) {
