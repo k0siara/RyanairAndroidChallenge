@@ -1,14 +1,14 @@
 package com.patrykkosieradzki.ryanairandroidchallenge.domain.exceptions
 
 sealed class ApiException(
-    errorMessage: String
+    open val errorMessage: String
 ) : RuntimeException(errorMessage) {
     data class UnknownApiException(
-        val errorMessage: String
+        override val errorMessage: String
     ) : ApiException(
         errorMessage
     )
 
-    data class NetworkError(val errorMessage: String) : ApiException(errorMessage)
-    data class OtherError(val errorMessage: String) : ApiException(errorMessage)
+    data class NetworkError(override val errorMessage: String) : ApiException(errorMessage)
+    data class OtherError(override val errorMessage: String) : ApiException(errorMessage)
 }
