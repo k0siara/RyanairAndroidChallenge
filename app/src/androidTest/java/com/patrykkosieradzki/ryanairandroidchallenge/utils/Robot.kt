@@ -1,15 +1,15 @@
 package com.patrykkosieradzki.ryanairandroidchallenge.utils
 
+import android.view.KeyEvent
 import android.view.View
 import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
-import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
-import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.matcher.RootMatchers
+import androidx.test.espresso.action.ViewActions.pressKey
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.rule.ActivityTestRule
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Matcher
 import org.koin.test.KoinTest
@@ -18,6 +18,10 @@ import java.util.concurrent.TimeUnit
 
 open class Robot {
 
+    fun Int.inputText(text: String) {
+        onView(withId(this)).perform(typeText(text), pressKey(KeyEvent.KEYCODE_ENTER))
+    }
+
     fun wait(seconds: Int) = TimeUnit.SECONDS.sleep(seconds.toLong())
 
     fun waitMs(milliseconds: Int) = TimeUnit.MILLISECONDS.sleep(milliseconds.toLong())
@@ -25,7 +29,7 @@ open class Robot {
     fun capture(tag: String, waitForCaptureInMs: Int = 500, inputToHide: Int = 0) {
         if (screenshotsEnabled) {
             if (inputToHide != 0) {
-                Espresso.onView(ViewMatchers.withId(inputToHide)).perform(HideCursorAction())
+                onView(withId(inputToHide)).perform(HideCursorAction())
             }
             waitMs(waitForCaptureInMs)
             val topLevelView = getRecentDecorView(getWindowDecorViews())
@@ -126,14 +130,6 @@ abstract class RobotTest<R : Robot> : KoinTest {
     }
 
     abstract fun createRobot(): R
-}
-
-open class ActivityRobot<T : AppCompatActivity>(protected val rule: ActivityTestRule<T>) : Robot() {
-    fun checkWasToastShown(text: String) {
-        Espresso.onView(ViewMatchers.withText(text))
-            .inRoot(RootMatchers.withDecorView(CoreMatchers.not(rule.activity.window.decorView)))
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-    }
 }
 
 class HideCursorAction : ViewAction {

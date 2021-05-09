@@ -8,6 +8,7 @@ import com.patrykkosieradzki.ryanairandroidchallenge.utils.mockViewModelRule
 import org.junit.Rule
 import org.junit.Test
 import org.koin.test.mock.declareMock
+import org.threeten.bp.LocalDateTime
 
 class FlightsListFragmentShould : RobotTest<FlightsListFragmentRobot>() {
 
@@ -27,7 +28,9 @@ class FlightsListFragmentShould : RobotTest<FlightsListFragmentRobot>() {
     fun showFlightsListFragment() {
         withRobot {
             startFragment()
-            capture("03_Flights_list")
+            capture("03_Flights_list_empty")
+            setMockData()
+            capture("03_Flights_list_filled")
         }
     }
 
@@ -49,5 +52,42 @@ class FlightsListFragmentRobot :
                 )
             ).toBundle()
         ) { FlightsListFragment() }
+    }
+
+    fun setMockData() {
+        setViewState(
+            FlightsListViewState(
+                inProgress = false,
+                dateOut = "2021-05-09",
+                originCode = "WRO",
+                destinationCode = "STN",
+                flights = listOf(
+                    FlightListItem(
+                        originCode = "WRO",
+                        originName = "Wroclaw",
+                        destinationCode = "STN",
+                        destinationName = "London Stansted",
+                        duration = "02:20",
+                        amount = 104.33F,
+                        currency = "EUR",
+                        flightNumber = "ABC 123",
+                        startDateTime = LocalDateTime.of(2020, 1, 1, 10, 30),
+                        endDateTime = LocalDateTime.of(2020, 1, 1, 15, 10),
+                    ),
+                    FlightListItem(
+                        originCode = "WRO",
+                        originName = "Wroclaw",
+                        destinationCode = "STN",
+                        destinationName = "London Stansted",
+                        duration = "02:20",
+                        amount = 104.33F,
+                        currency = "EUR",
+                        flightNumber = "ABC 123",
+                        startDateTime = LocalDateTime.of(2020, 1, 3, 8, 30),
+                        endDateTime = LocalDateTime.of(2020, 1, 3, 12, 0),
+                    )
+                )
+            )
+        )
     }
 }

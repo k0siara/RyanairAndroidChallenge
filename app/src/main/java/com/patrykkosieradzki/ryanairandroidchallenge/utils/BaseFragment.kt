@@ -70,7 +70,7 @@ abstract class BaseFragment<STATE : ViewState, VM : BaseViewModel<STATE>, VDB : 
             loader = LottieAnimationView(requireContext()).apply {
                 isClickable = true
                 isFocusable = true
-                visibility = View.VISIBLE
+                visibility = View.GONE
                 setBackgroundColor(getColor(requireContext(), R.color.white))
                 setAnimation(R.raw.lottie_loading_animation)
                 repeatMode = LottieDrawable.RESTART

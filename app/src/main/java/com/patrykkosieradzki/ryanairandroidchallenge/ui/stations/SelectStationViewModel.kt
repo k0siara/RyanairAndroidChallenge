@@ -5,7 +5,6 @@ import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStati
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.BaseViewModel
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.ViewState
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.valueNN
-import kotlinx.coroutines.CoroutineScope
 
 class SelectStationViewModel(
     private val getAllStationsUseCase: GetAllStationsUseCase
@@ -14,7 +13,7 @@ class SelectStationViewModel(
 ) {
     override fun initialize() {
         super.initialize()
-        val block: suspend CoroutineScope.() -> Unit = {
+        safeLaunch {
             val stations = getAllStationsUseCase.invoke()
             val groupedStations = convertStationsToGroupedStationList(stations)
 
@@ -26,7 +25,6 @@ class SelectStationViewModel(
                 )
             }
         }
-        safeLaunch(block)
     }
 
     private fun convertStationsToGroupedStationList(

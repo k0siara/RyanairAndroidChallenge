@@ -120,7 +120,8 @@
                         android:id="@+id/adultsSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:spinnerMode="dialog" />
+                        android:spinnerMode="dialog"
+                        app:selection="@{vm.viewState.adultsSelected}" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -141,7 +142,8 @@
                         android:id="@+id/teensSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:spinnerMode="dialog" />
+                        android:spinnerMode="dialog"
+                        app:selection="@{vm.viewState.teensSelected}" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -162,7 +164,8 @@
                         android:id="@+id/childrenSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:spinnerMode="dialog" />
+                        android:spinnerMode="dialog"
+                        app:selection="@{vm.viewState.childrenSelected}" />
 
                 </LinearLayout>
 

@@ -1,6 +1,7 @@
 package com.patrykkosieradzki.ryanairandroidchallenge.utils
 
 import android.view.View
+import android.widget.Spinner
 import androidx.databinding.BindingAdapter
 
 @BindingAdapter("onClick")
@@ -16,4 +17,9 @@ fun View.setVisibleInvisible(visible: Boolean) {
 @BindingAdapter("visibleGone")
 fun View.setVisibleGone(visible: Boolean) {
     visibility = if (visible) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("selection")
+fun Spinner.setSelection(selection: Int) {
+    setSelection(selection)
 }
