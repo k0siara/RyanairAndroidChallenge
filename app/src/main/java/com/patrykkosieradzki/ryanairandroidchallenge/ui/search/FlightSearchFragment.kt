@@ -14,7 +14,6 @@ import com.patrykkosieradzki.ryanairandroidchallenge.utils.BaseFragment
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.navigateTo
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.valueNN
 import org.threeten.bp.LocalDate
-import java.util.*
 
 class FlightSearchFragment :
     BaseFragment<FlightSearchViewState, FlightSearchViewModel, FlightSearchFragmentBinding>(
@@ -87,9 +86,9 @@ class FlightSearchFragment :
         DatePickerDialog(
             requireActivity(),
             { _, year, monthOfYear, dayOfMonth ->
-                viewModel.updateDepartureDate(LocalDate.of(year, monthOfYear, dayOfMonth))
+                viewModel.updateDepartureDate(LocalDate.of(year, monthOfYear + 1, dayOfMonth))
             },
-            departureDate.year, departureDate.monthValue, departureDate.dayOfMonth
+            departureDate.year, departureDate.monthValue - 1, departureDate.dayOfMonth
         ).show()
     }
 
