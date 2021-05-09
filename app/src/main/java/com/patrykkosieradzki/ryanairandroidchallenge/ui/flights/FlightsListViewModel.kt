@@ -17,7 +17,6 @@ class FlightsListViewModel(
     fun searchForFlights(flightSearchFilters: FlightSearchFiltersParcel) {
         safeLaunch {
             val flightSearchData = getFlightSearchResultsUseCase.invoke(flightSearchFilters)
-
             val flights = flightSearchData.trips.map { trip ->
                 trip.dates.map { tripDate ->
                     tripDate.flights.map { flight ->
@@ -42,10 +41,10 @@ class FlightsListViewModel(
                     dateOut = flightSearchFilters.dateOut,
                     originCode = flightSearchFilters.originCode,
                     destinationCode = flightSearchFilters.destinationCode,
-                    flights = flights,
-                    inProgress = false
+                    flights = flights
                 )
             }
+            updateViewStateToSuccess()
         }
     }
 

@@ -9,6 +9,7 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.annotation.LayoutRes
+import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -69,7 +70,8 @@ abstract class BaseFragment<STATE : ViewState, VM : BaseViewModel<STATE>, VDB : 
             loader = LottieAnimationView(requireContext()).apply {
                 isClickable = true
                 isFocusable = true
-                visibility = View.GONE
+                visibility = View.VISIBLE
+                setBackgroundColor(getColor(requireContext(), R.color.white))
                 setAnimation(R.raw.lottie_loading_animation)
                 repeatMode = LottieDrawable.RESTART
                 repeatCount = LottieDrawable.INFINITE
