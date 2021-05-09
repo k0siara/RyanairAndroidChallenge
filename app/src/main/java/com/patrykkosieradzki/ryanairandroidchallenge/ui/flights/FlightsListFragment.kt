@@ -19,7 +19,12 @@ class FlightsListFragment :
 
     override fun setupViews(view: View) {
         super.setupViews(view)
-        binding.itemBinding = itemBinding
+        with(binding) {
+            binding.itemBinding = this@FlightsListFragment.itemBinding
+            toolbar.setNavigationOnClickListener {
+                onBackEvent.invoke()
+            }
+        }
         viewModel.searchForFlights(args.flightSearchFilters)
     }
 }
