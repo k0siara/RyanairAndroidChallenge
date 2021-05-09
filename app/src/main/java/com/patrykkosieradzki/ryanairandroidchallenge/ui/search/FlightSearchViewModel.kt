@@ -94,7 +94,7 @@ class FlightSearchViewModel : BaseViewModel<FlightSearchViewState>(
         if (isFormValid()) {
             searchForFlightsEvent.fireEvent()
         } else {
-            showToastEvent.fireEvent("Fill search data")
+            showToastEvent.fireEvent(FILL_SEARCH_DATA_MESSAGE)
         }
     }
 
@@ -112,6 +112,7 @@ class FlightSearchViewModel : BaseViewModel<FlightSearchViewState>(
     }
 
     companion object {
+        const val FILL_SEARCH_DATA_MESSAGE = "Fill search data"
         val DATE_FORMATTER: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         const val MAX_SOLD_FLIGHTS = 1000
         const val MEAN_SOLD_FLIGHTS = 150
