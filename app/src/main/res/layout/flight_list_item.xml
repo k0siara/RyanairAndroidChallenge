@@ -24,7 +24,7 @@
             android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{item.name}"
+            android:text="@{item.duration}"
             android:textSize="@dimen/font_size_12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/duration"
-            android:text="@{item.name}"
+            android:text="@{item.originCode}"
             android:textSize="@dimen/font_size_16"
             tools:text="DEL" />
 
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/departureCode"
             app:layout_constraintTop_toBottomOf="@id/departureCode"
-            android:text="@{item.name}"
+            android:text="@{item.originName}"
             android:textSize="@dimen/font_size_16"
             tools:text="France ABC" />
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/departureName"
             app:layout_constraintTop_toBottomOf="@id/departureName"
-            android:text="@{item.name}"
+            android:text="@{item.startDateTime.toLocalTime().toString()}"
             android:textSize="@dimen/font_size_16"
             tools:text="13:00" />
 
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/duration"
-            android:text="@{item.name}"
+            android:text="@{item.destinationCode}"
             android:textSize="@dimen/font_size_16"
             tools:text="BOM" />
 
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@+id/arrivalCode"
             app:layout_constraintTop_toBottomOf="@id/arrivalCode"
-            android:text="@{item.name}"
+            android:text="@{item.destinationName}"
             android:textSize="@dimen/font_size_16"
             tools:text="Poland WRO" />
 
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/arrivalName"
             app:layout_constraintTop_toBottomOf="@id/arrivalName"
-            android:text="@{item.name}"
+            android:text="@{item.endDateTime.toLocalTime().toString()}"
             android:textSize="@dimen/font_size_16"
             tools:text="23:00" />
 
@@ -99,7 +99,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/duration"
-            android:text="@{item.name}"
+            android:text="@{item.amount + ' ' + item.currency}"
             android:textSize="@dimen/font_size_16"
             tools:text="Amount: 148.99" />
 
@@ -110,7 +110,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/amount"
-            android:text="@{item.name}"
+            android:text="@{item.flightNumber}"
             android:textSize="@dimen/font_size_16"
             tools:text="Flight number: FR 202" />
 

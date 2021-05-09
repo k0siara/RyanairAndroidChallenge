@@ -19,7 +19,7 @@ class FlightsListFragment :
 
     override fun setupViews(view: View) {
         super.setupViews(view)
-        viewModel.searchForFlights(args.flightSearchFilters)
         binding.itemBinding = itemBinding
+        viewModel.searchForFlights(args.flightSearchFilters)
     }
 }

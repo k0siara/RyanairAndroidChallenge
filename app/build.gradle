@@ -37,6 +37,10 @@ android {
         if (project.ext.enableShot == true) {
             testInstrumentationRunnerArguments shot: 'true'
         }
+
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     testOptions {
@@ -80,6 +84,10 @@ android {
         exclude "META-INF/AL2.0"
         exclude "META-INF/LGPL2.1"
     }
+}
+
+allOpen {
+    annotation("com.patrykkosieradzki.ryanairandroidchallenge.AllOpen")
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
@@ -180,7 +188,6 @@ def projectScreenshotsDirectory = "$projectDir/screenshots"
 def deviceScreenshotsDirectory = '/sdcard/Pictures/' + appId + '/debug/screenshots'
 
 def clearScreenshotsTask = task('clearScreenshots', type: Exec) {
-    println deviceScreenshotsDirectory
     executable "${android.getAdbExe().toString()}"
     args 'shell', 'rm', '-r', deviceScreenshotsDirectory
 }

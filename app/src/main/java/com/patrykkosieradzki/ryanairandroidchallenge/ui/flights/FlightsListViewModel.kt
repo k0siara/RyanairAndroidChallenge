@@ -21,7 +21,6 @@ class FlightsListViewModel(
             val flights = flightSearchData.trips.map { trip ->
                 trip.dates.map { tripDate ->
                     tripDate.flights.map { flight ->
-                        println("dupa")
                         FlightListItem(
                             originCode = trip.origin,
                             originName = trip.originName,
@@ -37,8 +36,6 @@ class FlightsListViewModel(
                     }
                 }.flatten()
             }.flatten()
-
-            println(flights.size)
 
             updateViewState {
                 it.copy(

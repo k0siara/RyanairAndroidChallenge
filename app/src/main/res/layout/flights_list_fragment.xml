@@ -105,12 +105,27 @@
                 android:textStyle="bold"
                 android:text="Search results:" />
 
+            <TextView
+                android:id="@+id/noResultsFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/dimen_40"
+                app:layout_constraintTop_toBottomOf="@+id/searchResults"
+                visibleGone="@{vm.viewState.flights.empty}"
+                android:textSize="@dimen/font_size_22"
+                android:textStyle="bold"
+                android:text="No flights found" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchResults"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:clipToPadding="true"
+                app:layout_constraintTop_toBottomOf="@+id/noResultsFound"
                 tools:listitem="@layout/flight_list_item"
                 app:itemBinding="@{itemBinding}"
                 app:items="@{vm.viewState.flights}"

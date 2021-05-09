@@ -12,3 +12,8 @@ fun View.setOnClick(action: () -> Unit) {
 fun View.setVisibleInvisible(visible: Boolean) {
     visibility = if (visible) View.VISIBLE else View.INVISIBLE
 }
+
+@BindingAdapter("visibleGone")
+fun View.setVisibleGone(visible: Boolean) {
+    visibility = if (visible) View.VISIBLE else View.GONE
+}
