@@ -1,6 +1,6 @@
 # RyanairAndroidChallenge
 
-<img src="app/screenshots/02_Flight_search_filled.png" width="300"> <img src="app/screenshots/01_Station_list_filled.png" width="300"> <img src="app/screenshots/03_Flights_list_filled.png" width="300">
+<img src="app/screenshots/02_Flight_search_filled.png" width="250"> <img src="app/screenshots/01_Station_list_filled.png" width="250"> <img src="app/screenshots/03_Flights_list_filled.png" width="250">
 
 
 ## Architecture
