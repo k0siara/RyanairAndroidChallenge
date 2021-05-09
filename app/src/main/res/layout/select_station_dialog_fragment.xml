@@ -12,7 +12,7 @@
 
         <variable
             name="itemBinding"
-            type="me.tatarka.bindingcollectionadapter2.ItemBinding&lt;StationListItem>"/>
+            type="me.tatarka.bindingcollectionadapter2.ItemBinding&lt;StationListItem>" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -20,19 +20,31 @@
         android:layout_height="match_parent"
         tools:context=".ui.flightsearch.FlightSearchFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:padding="@dimen/dimen_20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filter search results" />
+
+            <EditText
+                android:id="@+id/stationFilterEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:items="@{vm.viewState.availableStations}"
-                app:itemBinding="@{itemBinding}"/>
+                android:layout_marginTop="@dimen/dimen_20"
+                app:itemBinding="@{itemBinding}"
+                app:items="@{vm.viewState.filteredStations}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 

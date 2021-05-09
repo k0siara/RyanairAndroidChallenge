@@ -2,6 +2,7 @@ package com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation
 
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.setFragmentResult
 import com.patrykkosieradzki.ryanairandroidchallenge.BR
 import com.patrykkosieradzki.ryanairandroidchallenge.R
@@ -48,7 +49,12 @@ class SelectStationDialogFragment :
 
     override fun setupViews(view: View) {
         super.setupViews(view)
-        binding.itemBinding = itemBinding
+        with(binding) {
+            itemBinding = this@SelectStationDialogFragment.itemBinding
+            stationFilterEditText.addTextChangedListener {
+                viewModel.updateStationsSearchResults(it.toString())
+            }
+        }
     }
 
     companion object {

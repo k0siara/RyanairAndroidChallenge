@@ -57,13 +57,13 @@ data class RegularFareResponse(
 @JsonClass(generateAdapter = true)
 data class FareResponse(
     @Json(name = "type") val type: String,
-    @Json(name = "amount") val amount: Long,
+    @Json(name = "amount") val amount: Float,
     @Json(name = "count") val count: Long,
     @Json(name = "hasDiscount") val hasDiscount: Boolean,
-    @Json(name = "publishedFare") val publishedFare: Long,
-    @Json(name = "discountInPercent") val discountInPercent: Long,
+    @Json(name = "publishedFare") val publishedFare: Float,
+    @Json(name = "discountInPercent") val discountInPercent: Float,
     @Json(name = "hasPromoDiscount") val hasPromoDiscount: Boolean,
-    @Json(name = "discountAmount") val discountAmount: Long,
+    @Json(name = "discountAmount") val discountAmount: Float,
     @Json(name = "hasBogof") val hasBogof: Boolean
 )
 

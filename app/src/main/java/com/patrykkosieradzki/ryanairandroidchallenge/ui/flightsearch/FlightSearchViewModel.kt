@@ -7,6 +7,7 @@ import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearc
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.BaseViewModel
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.ViewState
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.fireEvent
+import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.valueNN
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 
@@ -16,6 +17,7 @@ class FlightSearchViewModel : BaseViewModel<FlightSearchViewState>(
     val departureDateChangeEvent = LiveEvent<Unit>()
     val chooseDepartureStationEvent = LiveEvent<Unit>()
     val chooseArrivalStationEvent = LiveEvent<Unit>()
+    val searchForFlightsEvent = LiveEvent<Unit>()
 
     fun onDepartureDateClicked() {
         departureDateChangeEvent.fireEvent()
@@ -89,6 +91,24 @@ class FlightSearchViewModel : BaseViewModel<FlightSearchViewState>(
     }
 
     fun onSearchButtonClicked() {
+        if (isFormValid()) {
+            searchForFlightsEvent.fireEvent()
+        } else {
+            showToastEvent.fireEvent("Fill search data")
+        }
+    }
+
+    private fun isFormValid(): Boolean {
+        val viewState = viewState.valueNN
+        return viewState.selectedDepartureStationName.isNotEmpty() &&
+            viewState.selectedDepartureStationCode.isNotEmpty() &&
+            viewState.selectedArrivalStationName.isNotEmpty() &&
+            viewState.selectedArrivalStationCode.isNotEmpty() &&
+            (
+                viewState.adultsSelected != 0 ||
+                    viewState.teensSelected != 0 ||
+                    viewState.childrenSelected != 0
+                )
     }
 
     companion object {

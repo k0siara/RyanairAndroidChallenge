@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.StationListItem" />
+
+        <variable
+            name="item"
+            type="StationListItem" />
+
+        <variable
+            name="listener"
+            type="com.patrykkosieradzki.ryanairandroidchallenge.utils.OnItemClickListener&lt;StationListItem>" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="@{() -> listener.onClick(item)}"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_10">
+
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.name}"
+            android:textSize="@dimen/font_size_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Duration: 01:15" />
+
+        <TextView
+            android:id="@+id/departureCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/duration"
+            android:text="@{item.name}"
+            android:textSize="@dimen/font_size_16"
+            tools:text="DEL" />
+
+        <TextView
+            android:id="@+id/departureName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/departureCode"
+            app:layout_constraintTop_toBottomOf="@id/departureCode"
+            android:text="@{item.name}"
+            android:textSize="@dimen/font_size_16"
+            tools:text="France ABC" />
+
+        <TextView
+            android:id="@+id/departureTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/departureName"
+            app:layout_constraintTop_toBottomOf="@id/departureName"
+            android:text="@{item.name}"
+            android:textSize="@dimen/font_size_16"
+            tools:text="13:00" />
+
+        <TextView
+            android:id="@+id/arrivalCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/duration"
+            android:text="@{item.name}"
+            android:textSize="@dimen/font_size_16"
+            tools:text="BOM" />
+
+        <TextView
+            android:id="@+id/arrivalName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/arrivalCode"
+            app:layout_constraintTop_toBottomOf="@id/arrivalCode"
+            android:text="@{item.name}"
+            android:textSize="@dimen/font_size_16"
+            tools:text="Poland WRO" />
+
+        <TextView
+            android:id="@+id/arrivalTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/arrivalName"
+            app:layout_constraintTop_toBottomOf="@id/arrivalName"
+            android:text="@{item.name}"
+            android:textSize="@dimen/font_size_16"
+            tools:text="23:00" />
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/duration"
+            android:text="@{item.name}"
+            android:textSize="@dimen/font_size_16"
+            tools:text="Amount: 148.99" />
+
+        <TextView
+            android:id="@+id/flightNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/amount"
+            android:text="@{item.name}"
+            android:textSize="@dimen/font_size_16"
+            tools:text="Flight number: FR 202" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

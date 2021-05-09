@@ -37,7 +37,7 @@ abstract class BaseViewModel<STATE : ViewState>(
 
     open fun initialize() {}
 
-    protected fun updateError(exception: Throwable): ErrorEvent {
+    protected open fun updateError(exception: Throwable): ErrorEvent {
         return ErrorEvent(exception, isInitialState && _viewState.valueNN.inProgress)
     }
 

@@ -8,8 +8,10 @@ import android.widget.Spinner
 import androidx.fragment.app.setFragmentResultListener
 import com.patrykkosieradzki.ryanairandroidchallenge.R
 import com.patrykkosieradzki.ryanairandroidchallenge.databinding.FlightSearchFragmentBinding
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.FlightSearchFiltersParcel
 import com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.SelectStationDialogFragment
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.BaseFragment
+import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.navigateTo
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.valueNN
 import org.threeten.bp.LocalDate
 
@@ -33,6 +35,9 @@ class FlightSearchFragment :
                 showStationSelectionDialog { name, code ->
                     viewModel.updateArrivalStation(name, code)
                 }
+            }
+            searchForFlightsEvent.observe(viewLifecycleOwner) {
+                goToSearchResults()
             }
         }
 
@@ -97,6 +102,22 @@ class FlightSearchFragment :
         SelectStationDialogFragment
             .newInstance()
             .show(parentFragmentManager, STATION_SELECTION_DIALOG_TAG)
+    }
+
+    private fun goToSearchResults() {
+        val viewState = viewModel.viewState.valueNN
+        navigateTo(
+            FlightSearchFragmentDirections.actionFlightSearchFragmentToCameraDetailsFragment(
+                FlightSearchFiltersParcel(
+                    dateOut = viewState.departureDateStr,
+                    originCode = viewState.selectedDepartureStationCode,
+                    destinationCode = viewState.selectedArrivalStationCode,
+                    adults = viewState.adultsSelected,
+                    teens = viewState.teensSelected,
+                    children = viewState.childrenSelected
+                )
+            )
+        )
     }
 
     companion object {

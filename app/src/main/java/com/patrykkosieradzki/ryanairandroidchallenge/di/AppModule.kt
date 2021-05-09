@@ -4,7 +4,10 @@ import com.patrykkosieradzki.ryanairandroidchallenge.RyanairAppConfiguration
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.AppConfiguration
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStationsUseCase
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStationsUseCaseImpl
+import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetFlightSearchResultsUseCase
+import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetFlightSearchResultsUseCaseImpl
 import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightslist.FlightsListViewModel
 import com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.SelectStationViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -21,6 +24,12 @@ val appModule = module {
         )
     }
 
+    factory<GetFlightSearchResultsUseCase> {
+        GetFlightSearchResultsUseCaseImpl(
+            flightRepository = get()
+        )
+    }
+
     viewModel {
         FlightSearchViewModel()
     }
@@ -28,6 +37,12 @@ val appModule = module {
     viewModel {
         SelectStationViewModel(
             getAllStationsUseCase = get()
+        )
+    }
+
+    viewModel {
+        FlightsListViewModel(
+            getFlightSearchResultsUseCase = get()
         )
     }
 }

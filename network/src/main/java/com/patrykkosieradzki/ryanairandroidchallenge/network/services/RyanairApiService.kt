@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface RyanairApiService {
-    @GET("booking/v4/en-gb/Availability?dateout=2021-12-30")
+    @GET("booking/v4/en-gb/Availability")
     suspend fun getSearchFlightsResults(
         @Query("dateout") dateOut: String,
         @Query("origin") originCode: String,

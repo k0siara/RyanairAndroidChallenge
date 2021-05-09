@@ -18,22 +18,15 @@ class FlightApiRepository(
         }.stations.toDomain()
     }
 
-    override suspend fun getFlights(
-        dateOut: String,
-        originCode: String,
-        destinationCode: String,
-        adults: Int,
-        teens: Int,
-        children: Int
-    ): FlightSearchData {
+    override suspend fun getFlights(flightSearchFilters: FlightSearchFilters): FlightSearchData {
         return networkHandler.safeNetworkCall {
             apiService.getSearchFlightsResults(
-                dateOut,
-                originCode,
-                destinationCode,
-                adults,
-                teens,
-                children
+                flightSearchFilters.dateOut,
+                flightSearchFilters.originCode,
+                flightSearchFilters.destinationCode,
+                flightSearchFilters.adults,
+                flightSearchFilters.teens,
+                flightSearchFilters.children
             )
         }.toDomain()
     }

@@ -48,13 +48,13 @@ data class RegularFare(
 
 data class Fare(
     val type: String,
-    val amount: Long,
+    val amount: Float,
     val count: Long,
     val hasDiscount: Boolean,
-    val publishedFare: Long,
-    val discountInPercent: Long,
+    val publishedFare: Float,
+    val discountInPercent: Float,
     val hasPromoDiscount: Boolean,
-    val discountAmount: Long,
+    val discountAmount: Float,
     val hasBogof: Boolean
 )
 

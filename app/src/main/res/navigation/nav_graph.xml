@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/flightSearchFragment">
+
+    <fragment
+        android:id="@+id/flightSearchFragment"
+        android:name="com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchFragment"
+        android:label="FlightSearchFragment"
+        tools:layout="@layout/flight_search_fragment">
+        <action
+            android:id="@+id/action_flightSearchFragment_to_cameraDetailsFragment"
+            app:destination="@id/flightsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flightsListFragment"
+        android:name="com.patrykkosieradzki.ryanairandroidchallenge.ui.flightslist.FlightsListFragment"
+        android:label="FlightsListFragment"
+        tools:layout="@layout/flights_list_fragment" >
+        <argument
+            android:name="flightSearchFilters"
+            app:argType="com.patrykkosieradzki.ryanairandroidchallenge.ui.FlightSearchFiltersParcel" />
+    </fragment>
+</navigation>
