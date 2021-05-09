@@ -1,9 +1,9 @@
-package com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch
+package com.patrykkosieradzki.ryanairandroidchallenge.ui.search
 
 import com.hadilq.liveevent.LiveEvent
-import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel.Companion.DATE_FORMATTER
-import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel.Companion.MAX_SOLD_FLIGHTS
-import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel.Companion.MEAN_SOLD_FLIGHTS
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.search.FlightSearchViewModel.Companion.DATE_FORMATTER
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.search.FlightSearchViewModel.Companion.MAX_SOLD_FLIGHTS
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.search.FlightSearchViewModel.Companion.MEAN_SOLD_FLIGHTS
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.BaseViewModel
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.ViewState
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.fireEvent

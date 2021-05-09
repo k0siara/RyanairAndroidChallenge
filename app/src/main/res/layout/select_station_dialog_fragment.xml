@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.StationListItem" />
+        <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.stations.StationListItem" />
 
         <variable
             name="vm"
-            type="com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.SelectStationViewModel" />
+            type="com.patrykkosieradzki.ryanairandroidchallenge.ui.stations.SelectStationViewModel" />
 
         <variable
             name="itemBinding"
@@ -18,7 +18,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.flightsearch.FlightSearchFragment">
+        tools:context=".ui.search.FlightSearchFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

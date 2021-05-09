@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.StationListItem" />
+        <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.flights.FlightListItem" />
 
         <variable
             name="vm"
-            type="com.patrykkosieradzki.ryanairandroidchallenge.ui.flightslist.FlightsListViewModel" />
+            type="com.patrykkosieradzki.ryanairandroidchallenge.ui.flights.FlightsListViewModel" />
 
         <variable
             name="itemBinding"
-            type="me.tatarka.bindingcollectionadapter2.ItemBinding&lt;StationListItem>" />
+            type="me.tatarka.bindingcollectionadapter2.ItemBinding&lt;FlightListItem>" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -94,16 +94,26 @@
                     tools:text="10.04.2022" />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/searchResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/dimen_40"
+                app:layout_constraintTop_toBottomOf="@+id/departureDateSection"
+                android:textSize="@dimen/font_size_22"
+                android:textStyle="bold"
+                android:text="Search results:" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/departureDateSection"
-                android:layout_marginTop="@dimen/dimen_20"
+                app:layout_constraintTop_toBottomOf="@+id/searchResults"
                 tools:listitem="@layout/flight_list_item"
                 app:itemBinding="@{itemBinding}"
-                app:items="@{vm.viewState.filteredStations}"
+                app:items="@{vm.viewState.flights}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

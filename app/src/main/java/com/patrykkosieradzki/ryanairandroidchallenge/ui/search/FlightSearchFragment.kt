@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch
+package com.patrykkosieradzki.ryanairandroidchallenge.ui.search
 
 import android.app.DatePickerDialog
 import android.view.View
@@ -9,7 +9,7 @@ import androidx.fragment.app.setFragmentResultListener
 import com.patrykkosieradzki.ryanairandroidchallenge.R
 import com.patrykkosieradzki.ryanairandroidchallenge.databinding.FlightSearchFragmentBinding
 import com.patrykkosieradzki.ryanairandroidchallenge.ui.FlightSearchFiltersParcel
-import com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.SelectStationDialogFragment
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.stations.SelectStationDialogFragment
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.BaseFragment
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.navigateTo
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.extensions.valueNN
@@ -88,7 +88,7 @@ class FlightSearchFragment :
             { _, year, monthOfYear, dayOfMonth ->
                 viewModel.updateDepartureDate(LocalDate.of(year, monthOfYear, dayOfMonth))
             },
-            departureDate.year, departureDate.monthValue, departureDate.year
+            departureDate.year - 5, departureDate.monthValue, departureDate.year
         ).show()
     }
 

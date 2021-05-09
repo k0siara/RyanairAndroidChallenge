@@ -7,13 +7,13 @@
 
         <variable
             name="vm"
-            type="com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel" />
+            type="com.patrykkosieradzki.ryanairandroidchallenge.ui.search.FlightSearchViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.flightsearch.FlightSearchFragment">
+        tools:context=".ui.search.FlightSearchFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

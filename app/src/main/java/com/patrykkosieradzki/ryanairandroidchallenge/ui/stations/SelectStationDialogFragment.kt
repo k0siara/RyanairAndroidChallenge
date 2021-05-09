@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation
+package com.patrykkosieradzki.ryanairandroidchallenge.ui.stations
 
 import android.view.View
 import androidx.core.os.bundleOf
@@ -7,9 +7,9 @@ import androidx.fragment.app.setFragmentResult
 import com.patrykkosieradzki.ryanairandroidchallenge.BR
 import com.patrykkosieradzki.ryanairandroidchallenge.R
 import com.patrykkosieradzki.ryanairandroidchallenge.databinding.SelectStationDialogFragmentBinding
-import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchFragment.Companion.RECEIVE_STATION_BUNDLE_STATION_CODE_KEY
-import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchFragment.Companion.RECEIVE_STATION_BUNDLE_STATION_NAME_KEY
-import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchFragment.Companion.RECEIVE_STATION_REQUEST_KEY
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.search.FlightSearchFragment.Companion.RECEIVE_STATION_BUNDLE_STATION_CODE_KEY
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.search.FlightSearchFragment.Companion.RECEIVE_STATION_BUNDLE_STATION_NAME_KEY
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.search.FlightSearchFragment.Companion.RECEIVE_STATION_REQUEST_KEY
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.BaseDialogFragment
 import com.patrykkosieradzki.ryanairandroidchallenge.utils.OnItemClickListener
 import me.tatarka.bindingcollectionadapter2.ItemBinding

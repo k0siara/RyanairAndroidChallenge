@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.StationListItem" />
+        <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.stations.StationListItem" />
 
         <variable
             name="item"

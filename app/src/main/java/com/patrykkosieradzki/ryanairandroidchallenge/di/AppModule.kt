@@ -6,9 +6,9 @@ import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStati
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStationsUseCaseImpl
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetFlightSearchResultsUseCase
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetFlightSearchResultsUseCaseImpl
-import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchViewModel
-import com.patrykkosieradzki.ryanairandroidchallenge.ui.flightslist.FlightsListViewModel
-import com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.SelectStationViewModel
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.search.FlightSearchViewModel
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.flights.FlightsListViewModel
+import com.patrykkosieradzki.ryanairandroidchallenge.ui.stations.SelectStationViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

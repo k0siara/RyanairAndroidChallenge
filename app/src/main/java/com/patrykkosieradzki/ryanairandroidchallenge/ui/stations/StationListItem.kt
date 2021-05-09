@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation
+package com.patrykkosieradzki.ryanairandroidchallenge.ui.stations
 
 enum class StationListItemType {
     HEADER, GROUP_ITEM

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/flightSearchFragment"
-        android:name="com.patrykkosieradzki.ryanairandroidchallenge.ui.flightsearch.FlightSearchFragment"
+        android:name="com.patrykkosieradzki.ryanairandroidchallenge.ui.search.FlightSearchFragment"
         android:label="FlightSearchFragment"
         tools:layout="@layout/flight_search_fragment">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/flightsListFragment"
-        android:name="com.patrykkosieradzki.ryanairandroidchallenge.ui.flightslist.FlightsListFragment"
+        android:name="com.patrykkosieradzki.ryanairandroidchallenge.ui.flights.FlightsListFragment"
         android:label="FlightsListFragment"
         tools:layout="@layout/flights_list_fragment" >
         <argument

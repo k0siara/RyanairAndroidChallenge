@@ -5,15 +5,11 @@
 
     <data>
 
-        <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation.StationListItem" />
+        <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.flights.FlightListItem" />
 
         <variable
             name="item"
-            type="StationListItem" />
-
-        <variable
-            name="listener"
-            type="com.patrykkosieradzki.ryanairandroidchallenge.utils.OnItemClickListener&lt;StationListItem>" />
+            type="FlightListItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
-        android:onClick="@{() -> listener.onClick(item)}"
         android:orientation="vertical"
         android:padding="@dimen/dimen_10">
 

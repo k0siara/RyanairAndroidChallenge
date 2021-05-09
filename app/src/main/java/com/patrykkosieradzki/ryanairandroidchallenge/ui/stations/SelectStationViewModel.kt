@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.ryanairandroidchallenge.ui.selectstation
+package com.patrykkosieradzki.ryanairandroidchallenge.ui.stations
 
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.model.Station
 import com.patrykkosieradzki.ryanairandroidchallenge.domain.usecases.GetAllStationsUseCase
