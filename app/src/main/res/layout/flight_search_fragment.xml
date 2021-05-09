@@ -44,14 +44,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Departure" />
+                    android:text="@string/departure" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="false"
                     android:focusable="false"
-                    android:hint="Select station"
+                    android:hint="@string/select_station"
                     android:text="@{vm.viewState.selectedDepartureStationName}"
                     app:onClick="@{vm::onDepartureFieldClicked}" />
             </LinearLayout>
@@ -70,14 +70,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Arrival" />
+                    android:text="@string/arrival" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="false"
                     android:focusable="false"
-                    android:hint="Select station"
+                    android:hint="@string/select_station"
                     android:text="@{vm.viewState.selectedArrivalStationName}"
                     app:onClick="@{vm::onArrivalFieldClicked}" />
             </LinearLayout>
@@ -95,7 +95,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Adults" />
+                    android:text="@string/adults" />
 
                 <Spinner
                     android:id="@+id/adultsSpinner"
@@ -116,7 +116,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Teens" />
+                    android:text="@string/teens" />
 
                 <Spinner
                     android:id="@+id/teensSpinner"
@@ -137,7 +137,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Children" />
+                    android:text="@string/children" />
 
                 <Spinner
                     android:id="@+id/childrenSpinner"
@@ -162,7 +162,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Departure date" />
+                    android:text="@string/departure_date" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -202,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_40"
-                android:text="SEARCH FOR FLIGHTS"
+                android:text="@string/search_for_flights"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/priceSeekbar"

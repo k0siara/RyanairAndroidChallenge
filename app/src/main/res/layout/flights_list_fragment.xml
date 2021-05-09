@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="com.patrykkosieradzki.ryanairandroidchallenge.ui.flights.FlightListItem" />
 
         <variable
@@ -36,7 +37,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Departure" />
+                    android:text="@string/departure" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -59,7 +60,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Arrival" />
+                    android:text="@string/arrival" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -83,7 +84,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Departure date" />
+                    android:text="@string/departure_date" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -98,38 +99,38 @@
                 android:id="@+id/searchResults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/dimen_40"
-                app:layout_constraintTop_toBottomOf="@+id/departureDateSection"
+                android:text="@string/search_results"
                 android:textSize="@dimen/font_size_22"
                 android:textStyle="bold"
-                android:text="Search results:" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/departureDateSection" />
 
             <TextView
                 android:id="@+id/noResultsFound"
+                visibleGone="@{vm.viewState.flights.empty}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/dimen_40"
-                app:layout_constraintTop_toBottomOf="@+id/searchResults"
-                visibleGone="@{vm.viewState.flights.empty}"
+                android:text="@string/no_flights_found"
                 android:textSize="@dimen/font_size_22"
                 android:textStyle="bold"
-                android:text="No flights found" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchResults" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:clipToPadding="true"
-                app:layout_constraintTop_toBottomOf="@+id/noResultsFound"
-                tools:listitem="@layout/flight_list_item"
                 app:itemBinding="@{itemBinding}"
                 app:items="@{vm.viewState.flights}"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/noResultsFound"
+                tools:listitem="@layout/flight_list_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
